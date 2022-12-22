@@ -33,12 +33,14 @@ class User:
     def _getChances(self):
         return self.chances
 
-start, end = map(int, input("Enter the range starting & ending points: ").split())
-user = User(start, end)
-play = ''
-while play!='q':
-    num = int(input("Guess the number: "))
-    play = user.game(num)
-    print(play[0])
-    play = play[1]
+def userBegin():
+    start, end = map(int, input("Enter the range starting & ending points: ").split())
+    user = User(start, end)
+    play = ''
+    while play!='q':
+        num = int(input("Guess the number: "))
+        play = user.game(num)
+        print(play[0])
+        play = play[1]
 
+userBegin()
