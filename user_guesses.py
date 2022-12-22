@@ -11,7 +11,7 @@ class User:
         self.numGenerated = randint(start, end)
         
         '''Chances are calculated using the concept of binary search in which  the total iterations required to find a number would be atmost log2(total_array_size)'''
-        self.chances = ceil(log2(abs(self.rangeN[0] - self.rangeN[1]))) 
+        self._setChances(ceil(log2(abs(self.rangeN[0] - self.rangeN[1]))))
         #print(self.numGenerated)
         
     def game(self, num):
