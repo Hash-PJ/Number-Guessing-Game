@@ -39,6 +39,9 @@ def userBegin():
     play = ''
     while play!='q':
         num = int(input("Guess the number: "))
+        if num > end or num < start:
+            print("You have guessed number out of selected range ({} - {}). Please Try again".format(start, end))
+            continue
         play = user.game(num)
         print(play[0])
         play = play[1]
