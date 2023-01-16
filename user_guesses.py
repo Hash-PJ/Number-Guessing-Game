@@ -34,11 +34,24 @@ class User:
         return self.chances
 
 def userBegin():
-    start, end = map(int, input("Enter the range starting & ending points: ").split())
+    flag = 1
+    while flag == 1:
+        try:
+            start = int(input("Enter the range starting points: "))
+            end = int(input("Enter the range ending points: "))
+            flag = 0
+        except ValueError as e:
+            print("Please enter numbers only!!!")
+            flag = 1
+            continue
+    ##start, end = map(int, input("Enter the range starting & ending points: ").split())
     user = User(start, end)
     play = ''
     while play!='q':
         num = int(input("Guess the number: "))
+        if num > end or num < start:
+            print("You have guessed number out of selected range ({} - {})".format(start, end))
+            continue
         play = user.game(num)
         print(play[0])
         play = play[1]
