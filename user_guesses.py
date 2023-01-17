@@ -44,6 +44,7 @@ def userBegin():
             print("Please enter numbers only!!!")
             flag = 1
             continue
+            
     ##start, end = map(int, input("Enter the range starting & ending points: ").split())
     user = User(start, end)
     play = ''
