@@ -83,4 +83,10 @@ def userBegin():
         print(play[0])
         play = play[1]
 
-userBegin()
+again = True
+'''To Play again, keeping the function call in loop'''
+while again == True:
+    userBegin()
+    again = input("Would you like to play again?\nSelect [Y] for Yes & [N] for No.\n") == 'Y'
+else:
+    print("Thanks for playing, BYE!")
