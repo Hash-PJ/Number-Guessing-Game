@@ -13,21 +13,21 @@ class NumberGame:
     def guess(self, num: int) -> tuple[str, bool]:
         """Returns (message, keep_playing)."""
         if num == self._answer:
-            return "You got it! 🎉", False
+            return "Wow! You nailed it! 🎉", False
 
         self._chances -= 1
 
         if self._chances == 0:
-            return f"Out of chances! The number was {self._answer}.", False
+            return f"YOU LOST! The number was {self._answer}.", False
 
         hint = "LOWER" if num > self._answer else "HIGHER"
-        return f"Try {hint}. {self._chances} chances left.", True
+        return f"TRY AGAIN! Number is a bit {hint} than {num}. You have {self._chances} chances left...", True
 
 
 def play_round():
     while True:
         try:
-            choice = input("Enter range yourself or let me choose? [Y = me]: ").lower()
+            choice = input("Do you want to select the range or shall i choose for you? [Y = me]: ").lower()
             if choice == 'y':
                 start, end = sorted(sample(range(0, 10000), 2))
             else:
@@ -35,7 +35,7 @@ def play_round():
                 end = int(input("End: "))
 
             if abs(end - start) < 4:
-                print("Range too small. Try again.")
+                print("Range too small, Lets try again!")
                 continue
 
             print(f"Guessing between {start} and {end}.")
@@ -55,7 +55,7 @@ def play_round():
             continue
 
         if not (start <= num <= end):
-            print(f"Guess within {start}–{end}.")
+            print(f"Guessing out of the range, huh? Try within {start}–{end}!")
             continue
 
         message, playing = game.guess(num)
@@ -65,7 +65,7 @@ def play_round():
 if __name__ == "__main__":
     while True:
         play_round()
-        again = input("Play again? [Y/N]: ").upper()
+        again = input("Wanna play again? [Y/N]: ").upper()
         if again != 'Y':
             break
-    print("Thanks for playing. Bye!")
+    print("Thanks for playing. BYE!")
